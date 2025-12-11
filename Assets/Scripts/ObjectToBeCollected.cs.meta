@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 03ec05f84ac109b45b59a60538974504
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - baton: {fileID: 7166850045528863613, guid: 1eedcb7ece3af428dbbe7a460312c04e, type: 3}
+  - sword: {fileID: 100008, guid: 170990bbd16c2476d9ac25349aaef79b, type: 3}
+  - apple: {fileID: 2315219549555785912, guid: fb2c9a99b843a4ff7b6bb79c666e8ff7, type: 3}
+  - meat: {fileID: 3550630829881333670, guid: 622cd52afea994935a72092a7e5b8f51, type: 3}
+  - gold: {fileID: 6704120334906011732, guid: aaa32b517eade4519aae6bc929539251, type: 3}
+  - redDiamond: {fileID: 8645733555541376189, guid: d20e841141b39418cafcbe9748b0f0a4,
+      type: 3}
+  - yellowDiamond: {fileID: 1309400899360612733, guid: aad228ba087874db4bdb624fe6a8391b,
+      type: 3}
+  - blueDiamond: {fileID: 4395204708330635604, guid: 9b7e331b529a94039a0bfa868484656a,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
