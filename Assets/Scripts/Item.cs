@@ -81,7 +81,7 @@ public class Item
                 healthBenefits = 0;
                 damage = 0;
                 nb = 1;
-                maxNb = 10;
+                maxNb = 1000;
                 description = "Gold coins";
                 familyType = ItemFamilyType.LOOT;
                 article = "some";

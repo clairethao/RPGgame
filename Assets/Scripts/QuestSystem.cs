@@ -8,12 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class QuestSystem : MonoBehaviour
 {
-   /* [SerializeField] private GameObject stagePanel;
-    [SerializeField] private Text stageTitleText;
-    [SerializeField] private Text stageDescriptionText;
-    [SerializeField] private Text stageObjectivesText;
-    [SerializeField] private GameObject player; */
-
     int currentStage;
     bool timerStarted;
     float timer;
@@ -48,7 +42,7 @@ public class QuestSystem : MonoBehaviour
         if (startDisplayTimer)
         {
             displayTimer += Time.deltaTime;
-            if(displayTimer >= 2)
+            if (displayTimer >= 2)
             {
                 displayTimer = 0.0f;
                 startDisplayTimer = false;
@@ -63,7 +57,7 @@ public class QuestSystem : MonoBehaviour
         stagePanel.SetActive(display);
     }
 
-    void Init()
+    public void Init()
     {
         stageTitleText = GameObject.Find("stageTitle");
         stageObjectivesText = GameObject.Find("stageObjectives");
@@ -183,7 +177,7 @@ public class QuestSystem : MonoBehaviour
             p.SetActive(true);
             Debug.Log("Player instantiated: " + p.name + ", active=" + p.activeSelf);
             p.name = "Player";
-            
+
             p.transform.position = GameObject.Find("startingPoint").transform.position;
             p.transform.rotation = new Quaternion(0, 0, 0, 0);
             p.transform.rotation = Quaternion.identity;
@@ -250,7 +244,7 @@ public class QuestSystem : MonoBehaviour
                 objectiveAchieved[i] = true;
             }
         }
-        if (nbObjectivesAchieved == nbObjectivesToAchieve)
+        if (nbObjectivesAchieved >= 1) //for testing
         {
             DisplayMessage("Stage Complete");
             GetComponent<GameManager>().player.XP = CalculateTotalXPForLevel();
@@ -275,6 +269,15 @@ public class QuestSystem : MonoBehaviour
 
     void StageComplete()
     {
-        SceneManager.LoadScene("levelComplete");
+        var gm = GetComponent<GameManager>();
+        gm.IncreaseStage(1);   // increment here
+
+        if (SceneManager.GetActiveScene().name != "level3")
+            SceneManager.LoadScene("levelComplete");
+        else
+            SceneManager.LoadScene("endScene");
     }
+
+
 }
+

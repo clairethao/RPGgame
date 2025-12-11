@@ -17,8 +17,10 @@ public class ControlPlayer : MonoBehaviour
     [Tooltip("Health value between 0 and 100.")]
     public int health = 50;
     public bool shopIsDisplayed;
-    GameObject weapon;
+    //GameObject weapon;
     bool weaponIsActive = false;
+    [SerializeField] private GameObject weapon;
+
 
     public void IncreaseHealth(int amount)
     {
@@ -35,7 +37,14 @@ public class ControlPlayer : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         userMessage = GameObject.Find("userMessage");
-        userMessage.SetActive(false);
+        if (userMessage != null)
+        {
+            userMessage.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("userMessage not found in scene!");
+        }
 
         GameObject.Find("healthBar").GetComponent<ManageBar>().SetValue(health);
         shopUI = GameObject.Find("shopUI");
@@ -131,8 +140,15 @@ public class ControlPlayer : MonoBehaviour
 
     void PickUpObject2()
     {
-        string article = objectToPickup.GetComponent<ObjectToBeCollected>().item.article;
-        string message = "You just found " + article + " " + objectToPickup.GetComponent<ObjectToBeCollected>().item.name + "\n Collect? (y/n)";
+        var objScript = objectToPickup?.GetComponent<ObjectToBeCollected>();
+        if (objScript == null || objScript.item == null)
+        {
+            Debug.LogError("Missing ObjectToBeCollected or item data on objectToPickup!");
+            return;
+        }
+
+        string article = objScript.item.article;
+        string message = "You just found " + article + " " + objScript.item.name + "\n Collect? (y/n)";
         userMessage.SetActive(true);
         GameObject.Find("userMessageText").GetComponent<Text>().text = message;
     }

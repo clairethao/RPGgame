@@ -9,6 +9,7 @@ public class ObjectToBeCollected : MonoBehaviour
     public Item.ItemType type;
     public Item item;
 
+
     void Start()
     {
         item = new Item(type);

@@ -17,6 +17,11 @@ public class InventorySystem : MonoBehaviour
         inventoryDescription = GameObject.Find("inventoryDescription");
         inventoryPanel = GameObject.Find("inventoryPanel");
 
+        if (inventoryText == null) Debug.LogWarning("inventoryText not found in this scene.");
+        if (inventoryImage == null) Debug.LogWarning("inventoryImage not found in this scene.");
+        if (inventoryDescription == null) Debug.LogWarning("inventoryDescription not found in this scene.");
+        if (inventoryPanel == null) Debug.LogWarning("inventoryPanel not found in this scene.");
+
         DisplayUI(false);
 
         playerInventory = new List<Item>();
@@ -72,10 +77,10 @@ public class InventorySystem : MonoBehaviour
 
     void DisplayUI(bool toggle)
     {
-        inventoryText.SetActive(toggle);
-        inventoryPanel.SetActive(toggle);
-        inventoryImage.SetActive(toggle);
-        inventoryDescription.SetActive(toggle);
+        if (inventoryText != null) inventoryText.SetActive(toggle);
+        if (inventoryPanel != null) inventoryPanel.SetActive(toggle);
+        if (inventoryImage != null) inventoryImage.SetActive(toggle);
+        if (inventoryDescription != null) inventoryDescription.SetActive(toggle);
     }
 
     public bool UpdateItem(Item.ItemType type, int nbItemsToAdd)

@@ -13,6 +13,7 @@ public class ManageXP : MonoBehaviour
     GameObject powerSlider, accuracySlider, communicationSlider, initialXPTextUI, gameManager;
     float deltaPower, deltaAccuracy, deltaCommunication, deltaXP;
 
+
     void Start()
     {
         gameManager = GameObject.Find("gameManager");
@@ -30,6 +31,9 @@ public class ManageXP : MonoBehaviour
         accuracySlider = GameObject.Find("accuracySlider");
         communicationSlider = GameObject.Find("communicationSlider");
         initialXPTextUI = GameObject.Find("xpGained");
+
+        Debug.Log("xpGained object: " + initialXPTextUI);
+        Debug.Log("Text component: " + initialXPTextUI?.GetComponent<Text>());
 
         initialXPTextUI.GetComponent<Text>().text = "" + initialXP;
 
@@ -51,7 +55,7 @@ public class ManageXP : MonoBehaviour
             gameManager.GetComponent<GameManager>().player.accuracy = (int)currentAccuracy;
             gameManager.GetComponent<GameManager>().player.communication = (int)currentCommunication;
             gameManager.GetComponent<GameManager>().player.XP = (int)currentXP;
-            gameManager.GetComponent<GameManager>().IncreaseStage(1);
+            //gameManager.GetComponent<GameManager>().IncreaseStage(1);
             gameManager.GetComponent<GameManager>().LoadNewScene();
 
         }
